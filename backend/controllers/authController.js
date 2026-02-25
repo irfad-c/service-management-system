@@ -8,10 +8,9 @@ export const register = async (req, res) => {
   if (!name || !email || !password)
     return res.status(400).json({ message: "All fields required" });
 
-  const [exists] = await pool.query(
-    "SELECT id FROM users WHERE email = ?",
-    [email]
-  );
+  const [exists] = await pool.query("SELECT id FROM users WHERE email = ?", [
+    email,
+  ]);
 
   if (exists.length)
     return res.status(400).json({ message: "Email already exists" });
@@ -20,7 +19,7 @@ export const register = async (req, res) => {
 
   await pool.query(
     "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-    [name, email, hashed]
+    [name, email, hashed],
   );
 
   res.status(201).json({ message: "User registered" });
@@ -29,10 +28,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
-  const [users] = await pool.query(
-    "SELECT * FROM users WHERE email = ?",
-    [email]
-  );
+  const [users] = await pool.query("SELECT * FROM users WHERE email = ?", [
+    email,
+  ]);
 
   if (!users.length)
     return res.status(401).json({ message: "Invalid credentials" });
@@ -40,14 +38,11 @@ export const login = async (req, res) => {
   const user = users[0];
   const match = await bcrypt.compare(password, user.password);
 
-  if (!match)
-    return res.status(401).json({ message: "Invalid credentials" });
+  if (!match) return res.status(401).json({ message: "Invalid credentials" });
 
-  const token = jwt.sign(
-    { userId: user.id },
-    process.env.JWT_SECRET,
-    { expiresIn: "1d" }
-  );
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
 
   res.json({ token });
 };
