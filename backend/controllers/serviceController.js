@@ -39,8 +39,6 @@ export const updateService = async (req, res) => {
     [serviceId, req.user.id],
   );
 
-  console.log("rows:", rows);
-
   if (!rows.length) {
     return res.status(403).json({ message: "Not allowed" });
   }
