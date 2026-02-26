@@ -121,7 +121,7 @@ async function deleteService(id) {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });
-
+    e.target.reset();
     loadServices();
   } catch (error) {
     alert("Failed to delete service");
