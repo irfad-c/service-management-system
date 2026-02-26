@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h2>Dashboard</h2>
+    <button onclick="logout()">Logout</button>
+
+    <h3>Add / Edit Service</h3>
+    <form id="serviceForm">
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="text" id="description" placeholder="Description" required />
+      <input type="number" id="price" placeholder="Price" required />
+      <input type="hidden" id="serviceId" />
+      <button type="submit">Save</button>
+    </form>
+
+    <h3>Your Services</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="serviceTable"></tbody>
+    </table>
+
+    <script src="../js/services.js"></script>
+  </body>
+</html>
