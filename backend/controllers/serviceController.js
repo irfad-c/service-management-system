@@ -5,8 +5,8 @@ import pool from "../config/db.js";
 export const createService = async (req, res) => {
   const { title, description, price } = req.body;
 
-  if (!title || !price) {
-    return res.status(400).json({ message: "title and price required" });
+  if (!title || !price || !description) {
+    return res.status(400).json({ message: "title,price,description are required" });
   }
 
   await pool.query(
