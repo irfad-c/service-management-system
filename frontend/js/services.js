@@ -48,7 +48,7 @@ document.getElementById("serviceForm").addEventListener("submit", async (e) => {
   const url = id ? `${SERVICE_API_URL}/${id}` : `${SERVICE_API_URL}`;
   const method = id ? "PUT" : "POST";
 
-  await fetch(url, {
+  const res = await fetch(url, {
     method,
     headers: {
       "Content-Type": "application/json",
@@ -56,6 +56,13 @@ document.getElementById("serviceForm").addEventListener("submit", async (e) => {
     },
     body: JSON.stringify({ title, description, price }),
   });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.message || "Something went wrong");
+    return;
+  }
 
   e.target.reset();
   loadServices();
