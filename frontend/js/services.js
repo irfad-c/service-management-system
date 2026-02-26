@@ -121,6 +121,7 @@ async function deleteService(id) {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });
+    // This is the required if a user mistakenly click edit after that user tried to delete that service.
     e.target.reset();
     loadServices();
   } catch (error) {
