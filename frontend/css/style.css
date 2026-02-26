@@ -7,7 +7,6 @@ body {
 form {
   background: white;
   padding: 15px;
-  max-width: 500px;
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -34,10 +33,11 @@ table {
   width: 100%;
   background: white;
   border-collapse: collapse;
+  padding: 5px;
 }
 
 th,
 td {
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 5px;
 }

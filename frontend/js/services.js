@@ -55,7 +55,6 @@ if (serviceForm) {
     const title = document.getElementById("title").value.trim();
     const description = document.getElementById("description").value.trim();
     const price = Number(document.getElementById("price").value);
-
     if (price <= 0) {
       alert("Price must be a positive number");
       return;
