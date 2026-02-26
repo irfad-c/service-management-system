@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const SERVICE_API_URL = "http://localhost:5000/api/services";
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -13,7 +13,7 @@ function logout() {
 
 // FETCH SERVICES
 async function loadServices() {
-  const res = await fetch(`${API_URL}/services`, {
+  const res = await fetch(`${SERVICE_API_URL}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
@@ -45,7 +45,7 @@ document.getElementById("serviceForm").addEventListener("submit", async (e) => {
   const description = document.getElementById("description").value.trim();
   const price = Number(document.getElementById("price").value);
 
-  const url = id ? `${API_URL}/services/${id}` : `${API_URL}/services`;
+  const url = id ? `${SERVICE_API_URL}/${id}` : `${SERVICE_API_URL}`;
   const method = id ? "PUT" : "POST";
 
   await fetch(url, {
@@ -71,7 +71,7 @@ function editService(id, title, description, price) {
 
 // DELETE
 async function deleteService(id) {
-  await fetch(`${API_URL}/services/${id}`, {
+  await fetch(`${SERVICE_API_URL}/${id}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` },
   });

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const AUTH_API_URL = "http://localhost:5000/api/auth";
 
 // REGISTER
 const registerForm = document.getElementById("registerForm");
@@ -12,7 +12,7 @@ if (registerForm) {
     const password = document.getElementById("password").value;
 
     try {
-      const res = await fetch(`${API_URL}/register`, {
+      const res = await fetch(`${AUTH_API_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -43,7 +43,7 @@ if (loginForm) {
     const password = document.getElementById("password").value;
 
     try {
-      const res = await fetch(`${API_URL}/login`, {
+      const res = await fetch(`${AUTH_API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
