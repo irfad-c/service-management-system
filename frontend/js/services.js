@@ -20,16 +20,16 @@ async function loadServices() {
 
   const services = await res.json();
 
-  const table = document.getElementById("serviceTable");
+  const tableBody = document.getElementById("serviceTable");
 
   if (services.length === 0) {
-    table.innerHTML = `<tr><td colspan="4">No services found</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="4">No services found</td></tr>`;
     return;
   }
-  table.innerHTML = "";
+  tableBody.innerHTML = "";
 
   services.forEach((service) => {
-    table.innerHTML += `
+    tableBody.innerHTML += `
       <tr>
         <td>${service.title}</td>
         <td>${service.description}</td>
@@ -101,7 +101,7 @@ if (serviceForm) {
   });
 }
 
-// EDIT
+// EDIT 
 function editService(id, title, description, price) {
   document.getElementById("serviceId").value = id;
   document.getElementById("title").value = title;
