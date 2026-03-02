@@ -41,3 +41,9 @@ td {
   border: 1px solid #ccc;
   padding: 5px;
 }
+
+.btn-arrange {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

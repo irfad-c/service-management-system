@@ -63,3 +63,19 @@ if (loginForm) {
     }
   });
 }
+
+const loginPageHandle = document.getElementById("login-btn");
+
+if (loginPageHandle) {
+  loginPageHandle.addEventListener("click", () => {
+    window.location.href = "login.html";
+  });
+}
+
+const RegisterPageHandle = document.getElementById("register-btn");
+
+if (RegisterPageHandle) {
+  RegisterPageHandle.addEventListener("click", () => {
+    window.location.href = "register.html";
+  });
+}
